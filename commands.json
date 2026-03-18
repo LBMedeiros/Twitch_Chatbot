@@ -1,0 +1,39 @@
+{
+  "comandos": [
+    {
+      "nome": "!ping",
+      "resposta": "{user} Pong!🏓 ",
+      "descricao": "Testa se o bot está respondendo.",
+      "permissao": "Todos os usuários",
+      "cooldown": "5 segundos"
+    },
+    {
+      "nome": "!oi",
+      "resposta": "Olá, {user}! Bem-vindo ao canal! 👋",
+      "descricao": "Saudações",
+      "permissao": "todos",
+      "cooldown": "5 segundos"
+    },
+    {
+      "nome": "!social",
+      "resposta": " Siga-nos nas redes sociais! 📱 Twitter: @voipp_",
+      "descricao": "Mostra redes sociais",
+      "permissao": "todos",
+      "cooldown": "5 segundos"
+    },
+    {
+      "nome": "!comandos",
+      "resposta": "{user} Comandos disponíveis: !ping, !oi, !social, !game",
+      "descricao": "Lista os comandos disponíveis",
+      "permissao": "todos",
+      "cooldown": "5 segundos"
+    },
+    {
+      "nome": "!setup",
+      "resposta": "{user} Meu hardware é: Ryzen 5 5600 x Radeon Graphics; SSD Kingston 1TB; 16GB RAM; Placa Mãe Biostar A520MH 3.0",
+      "descricao": "Mostra o setup do bot",
+      "permissao": "todos",
+      "cooldown": "5 segundos"
+    }
+  ]
+}
