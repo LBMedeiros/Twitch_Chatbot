@@ -6,10 +6,10 @@ const commandsData = JSON.parse(fs.readFileSync("./commands.json", "utf8"));
 
 const client = new tmi.Client({
   identity: {
-    username: "BOT NAME",
-    password: "oauth: PASSWORD",
+    username: "BOT_NAME",
+    password: "oauth: *client_access*",
   },
-  channels: ["voipp_"],
+  channels: ["Twitch_Nickname"],
 });
 
 client.connect();
@@ -20,7 +20,7 @@ client.on("connected", (address, port) => {
 
 //mensagem automática
 setInterval(() => {
-  client.say("#voipp_", "🔥 Siga o canal para não perder as lives!");
+  client.say("#twitch_nickname", "🔥 Siga o canal para não perder as lives!");
 }, 500000);
 
 //cooldown global
