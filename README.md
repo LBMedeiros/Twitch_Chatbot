@@ -27,7 +27,7 @@ tmi.js
 Follow these steps to run the project locally:
 
 1. Clone the repository
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/LBMedeiros/Twitch_Chatbot.git
 2. Install dependencies
 npm install
 3. Configure your credentials
