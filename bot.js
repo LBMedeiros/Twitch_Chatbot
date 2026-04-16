@@ -6,7 +6,7 @@ const commandsData = JSON.parse(fs.readFileSync("./commands.json", "utf8"));
 const client = new tmi.Client({
   identity: {
     username: "voippbot",
-    password: "oauth:5zeqf4g6k1szolk29hug94e7daurks",
+    password: "oauth: Your_Oauth",
   },
   channels: ["voipp_"],
 });
