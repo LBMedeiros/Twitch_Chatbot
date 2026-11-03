@@ -77,17 +77,32 @@ function isOnCooldown(cmd) {
   return Date.now() - last < cooldownMs;
 }
 
+function rollDie(sides) {
+  return Math.floor(Math.random() * sides) + 1;
+}
+
+function currentTime() {
+  return new Date().toLocaleTimeString("pt-BR", {
+    timeZone: "America/Sao_Paulo",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 client.on("message", (channel, tags, message, self) => {
   if (self) return;
 
   messagesSinceTimer++;
 
-  // Pega só a primeira palavra, para "!ping oi" também funcionar.
-  const name = message.trim().split(/\s+/)[0].toLowerCase();
-  const cmd = commands.get(name);
+  // A primeira palavra é o comando; a segunda (se houver) é o "alvo".
+  // Ex: "!abraco @fulano" -> comando "!abraco", alvo "fulano".
+  const [first, second] = message.trim().split(/\s+/);
+  const cmd = commands.get(first.toLowerCase());
+  const target = second ? second.replace(/^@/, "") : "";
 
   if (!cmd) return;
   if (!hasPermission(cmd, tags)) return;
+  if (cmd.exigeAlvo && !target) return;
   if (isOnCooldown(cmd)) return;
 
   lastUsed.set(cmd.nome, Date.now());
@@ -95,6 +110,9 @@ client.on("message", (channel, tags, message, self) => {
   const user = tags["display-name"] || tags.username;
   const response = cmd.resposta
     .replaceAll("{user}", user)
+    .replaceAll("{alvo}", target || "todo mundo")
+    .replaceAll("{dado}", String(rollDie(6)))
+    .replaceAll("{hora}", currentTime())
     .replaceAll("{comandos}", commandList);
 
   client.say(channel, response);

@@ -40,6 +40,49 @@
       "descricao": "Mostra o setup do streamer.",
       "permissao": "todos",
       "cooldownSegundos": 5
+    },
+    {
+      "nome": "!lurk",
+      "resposta": "{user} foi dar uma lurkada. Valeu por deixar a live rodando! 👀",
+      "descricao": "Avisa que a pessoa vai assistir em silêncio.",
+      "permissao": "todos",
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!regras",
+      "resposta": "📜 Regras do chat: respeite todo mundo, sem spam, sem spoiler e sem divulgação sem permissão. Bora manter o chat de boa! 💜",
+      "descricao": "Mostra as regras do chat.",
+      "permissao": "todos",
+      "cooldownSegundos": 30
+    },
+    {
+      "nome": "!abraco",
+      "resposta": "{user} deu um abraço apertado em {alvo}! 🤗",
+      "descricao": "Abraça alguém (ex: !abraco @fulano). Sem nome, abraça todo mundo.",
+      "permissao": "todos",
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!dado",
+      "resposta": "{user} rolou o dado e tirou {dado}! 🎲",
+      "descricao": "Rola um dado de 6 lados.",
+      "permissao": "todos",
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!hora",
+      "resposta": "{user} Agora são {hora} (horário de Brasília). 🕒",
+      "descricao": "Mostra a hora atual.",
+      "permissao": "todos",
+      "cooldownSegundos": 10
+    },
+    {
+      "nome": "!so",
+      "resposta": "📢 Sigam também o canal de {alvo}: https://twitch.tv/{alvo} 💜",
+      "descricao": "Shoutout para outro streamer (ex: !so fulano).",
+      "permissao": "mods",
+      "cooldownSegundos": 5,
+      "exigeAlvo": true
     }
   ]
 }

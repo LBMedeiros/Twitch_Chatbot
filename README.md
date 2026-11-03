@@ -11,6 +11,9 @@ I built it while learning backend development and automation.
 - **Permissions**: a command can be open to everyone (`"todos"`) or restricted to moderators and the broadcaster (`"mods"`).
 - **Placeholders** in responses:
   - `{user}` is replaced by the name of the person who used the command.
+  - `{alvo}` is replaced by the first word after the command, without the `@` (`!abraco @fulano` → `fulano`). If there is none, it becomes `todo mundo`.
+  - `{dado}` is replaced by a random number from 1 to 6.
+  - `{hora}` is replaced by the current time in Brasília.
   - `{comandos}` is replaced by the list of all commands, so `!comandos` never goes out of date.
 - **Timed message**: posts a message every few minutes, but only when the chat has had activity since the last one. That keeps it quiet while the stream is offline.
 
@@ -60,10 +63,27 @@ Edit `commands.json`:
 | Field              | Meaning                                                |
 | ------------------ | ------------------------------------------------------ |
 | `nome`             | The command people type in chat                         |
-| `resposta`         | What the bot replies (supports `{user}` and `{comandos}`) |
+| `resposta`         | What the bot replies (supports the placeholders above)  |
 | `descricao`        | A note for you about what the command does              |
 | `permissao`        | `"todos"` (everyone) or `"mods"` (mods and broadcaster) |
 | `cooldownSegundos` | Seconds before the command can be used again            |
+| `exigeAlvo`        | Optional. If `true`, the command is ignored unless a name follows it (used by `!so`) |
+
+## Commands included
+
+| Command     | Who    | What it does                                   |
+| ----------- | ------ | ---------------------------------------------- |
+| `!ping`     | All    | Checks that the bot is alive                   |
+| `!oi`       | All    | Greets the user                                |
+| `!social`   | All    | Shows social media                             |
+| `!comandos` | All    | Lists every command                            |
+| `!setup`    | All    | Shows the streamer's PC specs                  |
+| `!lurk`     | All    | Says the user is watching quietly              |
+| `!regras`   | All    | Shows the chat rules                           |
+| `!abraco`   | All    | Hugs someone: `!abraco @name`                  |
+| `!dado`     | All    | Rolls a six-sided die                          |
+| `!hora`     | All    | Shows the current time (Brasília)              |
+| `!so`       | Mods   | Shoutout to another streamer: `!so name`       |
 
 The timed message is set in the `mensagemAutomatica` block of the same file: its text, how often it is sent (`intervaloMinutos`), and how many chat messages must have been sent since the last one (`minimoMensagensNoChat`).
 
