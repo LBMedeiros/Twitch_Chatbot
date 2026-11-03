@@ -1,76 +1,100 @@
-🤖 Twitch Chatbot
+# 🤖 Twitch Chatbot (VoippBot)
 
-This project is a chatbot developed using JavaScript and Node.js to automate messages and interactions in a Twitch chat.
+A small Twitch chat bot built with Node.js and [tmi.js](https://github.com/tmijs/tmi.js). It answers chat commands defined in a JSON file and posts a recurring message in the chat.
 
-It was created as part of my learning journey in backend development and automation.
+I built it while learning backend development and automation.
 
-🚀 Features
+## Features
 
-Automatic message sending in chat
+- **Configurable commands**: every command lives in `commands.json`. You can add or change one without touching the code.
+- **Per-command cooldown**: each command has its own cooldown, so nobody can spam it.
+- **Permissions**: a command can be open to everyone (`"todos"`) or restricted to moderators and the broadcaster (`"mods"`).
+- **Placeholders** in responses:
+  - `{user}` is replaced by the name of the person who used the command.
+  - `{alvo}` is replaced by the first word after the command, without the `@` (`!abraco @fulano` → `fulano`). If there is none, it becomes `todo mundo`.
+  - `{dado}` is replaced by a random number from 1 to 6.
+  - `{hora}` is replaced by the current time in Brasília.
+  - `{comandos}` is replaced by the list of all commands, so `!comandos` never goes out of date.
+- **Timed message**: posts a message every few minutes, but only when the chat has had activity since the last one. That keeps it quiet while the stream is offline.
 
-Custom command responses
+## Getting started
 
-Integration with StreamElements (complementary usage)
+Requires **Node.js 20.12 or newer**.
 
-Custom tag system for extended functionality
-
-🛠️ Technologies Used
-
-JavaScript
-
-Node.js
-
-tmi.js
-
-⚙️ Getting Started
-
-Follow these steps to run the project locally:
-
-1. Clone the repository
+```bash
 git clone https://github.com/LBMedeiros/Twitch_Chatbot.git
-2. Install dependencies
+cd Twitch_Chatbot
 npm install
-3. Configure your credentials
+cp .env.example .env
+```
 
-Open the main file (e.g. index.js) and add your Twitch credentials:
+Fill in `.env`:
 
-identity: {
-  username: 'your_bot_username',
-  password: 'oauth:your_token_here'
+```env
+TWITCH_USERNAME=your_bot_username
+TWITCH_OAUTH_TOKEN=your_token_here
+TWITCH_CHANNEL=your_channel
+```
+
+Then start the bot:
+
+```bash
+npm start
+```
+
+> ⚠️ `.env` is in `.gitignore`. Never commit your OAuth token. If one leaks, revoke it and generate a new one.
+
+You can get a chat token for the bot account with a tool such as [Twitch Token Generator](https://twitchtokengenerator.com/).
+
+## Configuring commands
+
+Edit `commands.json`:
+
+```json
+{
+  "nome": "!ping",
+  "resposta": "{user} Pong! 🏓",
+  "descricao": "Testa se o bot está respondendo.",
+  "permissao": "todos",
+  "cooldownSegundos": 5
 }
+```
 
-⚠️ Never share your OAuth token publicly.
+| Field              | Meaning                                                |
+| ------------------ | ------------------------------------------------------ |
+| `nome`             | The command people type in chat                         |
+| `resposta`         | What the bot replies (supports the placeholders above)  |
+| `descricao`        | A note for you about what the command does              |
+| `permissao`        | `"todos"` (everyone) or `"mods"` (mods and broadcaster) |
+| `cooldownSegundos` | Seconds before the command can be used again            |
+| `exigeAlvo`        | Optional. If `true`, the command is ignored unless a name follows it (used by `!so`) |
 
-4. Run the bot
-node index.js
-🔐 Configuration
+## Commands included
 
-To use this bot, you need a Twitch OAuth token.
+| Command     | Who    | What it does                                   |
+| ----------- | ------ | ---------------------------------------------- |
+| `!ping`     | All    | Checks that the bot is alive                   |
+| `!oi`       | All    | Greets the user                                |
+| `!social`   | All    | Shows social media                             |
+| `!comandos` | All    | Lists every command                            |
+| `!setup`    | All    | Shows the streamer's PC specs                  |
+| `!lurk`     | All    | Says the user is watching quietly              |
+| `!regras`   | All    | Shows the chat rules                           |
+| `!abraco`   | All    | Hugs someone: `!abraco @name`                  |
+| `!dado`     | All    | Rolls a six-sided die                          |
+| `!hora`     | All    | Shows the current time (Brasília)              |
+| `!so`       | Mods   | Shoutout to another streamer: `!so name`       |
 
-You can generate one from Twitch or tools like Twitch Token Generator.
+The timed message is set in the `mensagemAutomatica` block of the same file: its text, how often it is sent (`intervaloMinutos`), and how many chat messages must have been sent since the last one (`minimoMensagensNoChat`).
 
-For better security, consider using environment variables (.env) instead of hardcoding your credentials.
+Restart the bot after changing `commands.json`.
 
-📸 Demo
+## Ideas for the future
 
-Example of the bot running in a Twitch chat:
+- Web dashboard to manage commands
+- Twitch API integration (for example, real live/offline detection)
+- Commands that store data, such as counters
 
-(You can add a screenshot or GIF here)
-
-📈 Future Improvements
-
-Web dashboard for managing commands
-
-Deeper Twitch API integration
-
-Permission system (mods, subs, etc.)
-
-Database support for dynamic commands
-
-👨‍💻 Author
+## Author
 
 Developed by Lucas Medeiros.
-
-💡 Notes
-
-This project is continuously evolving as I improve my programming skills and explore new features.

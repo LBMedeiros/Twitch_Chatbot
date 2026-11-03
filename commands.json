@@ -1,39 +1,88 @@
 {
+  "mensagemAutomatica": {
+    "ativa": true,
+    "texto": "🔥 Siga o canal para não perder as lives!",
+    "intervaloMinutos": 10,
+    "minimoMensagensNoChat": 5
+  },
   "comandos": [
     {
       "nome": "!ping",
-      "resposta": "{user} Pong!🏓 ",
+      "resposta": "{user} Pong! 🏓",
       "descricao": "Testa se o bot está respondendo.",
-      "permissao": "Todos os usuários",
-      "cooldown": "5 segundos"
+      "permissao": "todos",
+      "cooldownSegundos": 5
     },
     {
       "nome": "!oi",
       "resposta": "Olá, {user}! Bem-vindo ao canal! 👋",
-      "descricao": "Saudações",
+      "descricao": "Saudação.",
       "permissao": "todos",
-      "cooldown": "5 segundos"
+      "cooldownSegundos": 5
     },
     {
       "nome": "!social",
-      "resposta": " Siga-nos nas redes sociais! 📱 Twitter: @voipp_",
-      "descricao": "Mostra redes sociais",
+      "resposta": "Siga-nos nas redes sociais! 📱 Twitter: @voipp_",
+      "descricao": "Mostra as redes sociais.",
       "permissao": "todos",
-      "cooldown": "5 segundos"
+      "cooldownSegundos": 5
     },
     {
       "nome": "!comandos",
-      "resposta": "{user} Comandos disponíveis: !ping, !oi, !social, !game",
-      "descricao": "Lista os comandos disponíveis",
+      "resposta": "{user} Comandos disponíveis: {comandos}",
+      "descricao": "Lista os comandos disponíveis (gerada automaticamente).",
       "permissao": "todos",
-      "cooldown": "5 segundos"
+      "cooldownSegundos": 5
     },
     {
       "nome": "!setup",
       "resposta": "{user} Meu hardware é: Ryzen 5 5600 x Radeon Graphics; SSD Kingston 1TB; 16GB RAM; Placa Mãe Biostar A520MH 3.0",
-      "descricao": "Mostra o setup do bot",
+      "descricao": "Mostra o setup do streamer.",
       "permissao": "todos",
-      "cooldown": "5 segundos"
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!lurk",
+      "resposta": "{user} foi dar uma lurkada. Valeu por deixar a live rodando! 👀",
+      "descricao": "Avisa que a pessoa vai assistir em silêncio.",
+      "permissao": "todos",
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!regras",
+      "resposta": "📜 Regras do chat: respeite todo mundo, sem spam, sem spoiler e sem divulgação sem permissão. Bora manter o chat de boa! 💜",
+      "descricao": "Mostra as regras do chat.",
+      "permissao": "todos",
+      "cooldownSegundos": 30
+    },
+    {
+      "nome": "!abraco",
+      "resposta": "{user} deu um abraço apertado em {alvo}! 🤗",
+      "descricao": "Abraça alguém (ex: !abraco @fulano). Sem nome, abraça todo mundo.",
+      "permissao": "todos",
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!dado",
+      "resposta": "{user} rolou o dado e tirou {dado}! 🎲",
+      "descricao": "Rola um dado de 6 lados.",
+      "permissao": "todos",
+      "cooldownSegundos": 5
+    },
+    {
+      "nome": "!hora",
+      "resposta": "{user} Agora são {hora} (horário de Brasília). 🕒",
+      "descricao": "Mostra a hora atual.",
+      "permissao": "todos",
+      "cooldownSegundos": 10
+    },
+    {
+      "nome": "!so",
+      "resposta": "📢 Sigam também o canal de {alvo}: https://twitch.tv/{alvo} 💜",
+      "descricao": "Shoutout para outro streamer (ex: !so fulano).",
+      "permissao": "mods",
+      "cooldownSegundos": 5,
+      "exigeAlvo": true
     }
   ]
 }
