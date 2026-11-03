@@ -1,15 +1,22 @@
 {
   "name": "voippbot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.1.0",
+  "description": "Twitch chat bot with configurable commands and timed messages",
+  "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node bot.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "twitch",
+    "chatbot",
+    "tmi.js"
+  ],
+  "author": "Lucas Medeiros",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20.12"
+  },
   "dependencies": {
     "tmi.js": "^1.8.5"
   }
